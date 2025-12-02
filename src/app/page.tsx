@@ -1,66 +1,86 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Hero from '@/components/Hero';
+import ClientCarousel from '@/components/ClientCarousel';
+import ProductCard from '@/components/ProductCard';
+import Link from 'next/link';
+import Image from 'next/image';
+import { CheckCircle, TrendingUp, ShieldCheck } from 'lucide-react';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <>
+      <Hero />
+      <ClientCarousel />
+
+      {/* Products Section */}
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">Our Products</h2>
+          <b><p className="section-subtitle">Designed for companies. Built for people.</p></b>
+          <div className={styles.grid}>
+            <ProductCard
+              title="PrintSpace"
+              description="Smart AI and NLP Based ERP for the garment manufacturing industry. Streamline operations and boost efficiency."
+              link="/products#printspace"
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <ProductCard
+              title="AccuTrack"
+              description="Intelligent asset, Human Resources & inventory tracking system designed for Industry 4.0."
+              link="/products#accutrack"
+            />
+            <ProductCard
+              title="We’re Cooking Something Big"
+              description="Don't blink, it's coming soon! <br> Trust us, it's going to be something Healthy."
+              link="#"
+              isComingSoon
+            />
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* E-Commerce Section */}
+      <section className={`section ${styles.ecommerceSection}`}>
+        <div className="container">
+          <div className={styles.split}>
+            <div className={styles.content}>
+              <h2 className="section-title" style={{ textAlign: 'left' }}>High-Performance E-Commerce</h2>
+              <p className={styles.text}>
+                We transform struggling online stores into high-speed, scalable powerhouses.
+              </p>
+              <ul className={styles.list}>
+                <li className={styles.listItem}>
+                  <CheckCircle className={styles.icon} />
+                  <span>Migrated crashing stores to stable architectures in minimal time.</span>
+                </li>
+                <li className={styles.listItem}>
+                  <TrendingUp className={styles.icon} />
+                  <span>1.5+ years of zero performance issues or crashes.</span>
+                </li>
+                <li className={styles.listItem}>
+                  <ShieldCheck className={styles.icon} />
+                  <span>Proven improvements in speed, conversion, and UX for cosmetic brands.</span>
+                </li>
+              </ul>
+            </div>
+            <div className={styles.imagePlaceholder}>
+              <Image
+                src="/images/ecommerce_dashboard_ui_1764703482483.png"
+                alt="E-Commerce Dashboard"
+                fill
+                className={styles.dashboardImage}
+              />
+              <div className={styles.statCard}>
+                <span className={styles.statNumber}>100%</span>
+                <span className={styles.statText}>Uptime</span>
+              </div>
+              <div className={styles.statCard} style={{ top: '60%', right: '-20px' }}>
+                <span className={styles.statNumber}>3x</span>
+                <span className={styles.statText}>Faster Load</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
