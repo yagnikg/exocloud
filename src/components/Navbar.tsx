@@ -43,10 +43,15 @@ export default function Navbar() {
                     </button>
                 </div>
 
-                {/* Mobile Menu Toggle */}
-                <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                {/* Mobile Controls */}
+                <div className={styles.mobileControls}>
+                    <button onClick={toggleTheme} className={styles.themeToggle} aria-label="Toggle theme">
+                        {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+                    </button>
+                    <button className={styles.mobileToggle} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
 
                 {/* Mobile Menu */}
                 {isOpen && (
@@ -55,9 +60,6 @@ export default function Navbar() {
                         <Link href="/products" className={styles.link} onClick={() => setIsOpen(false)}>Products</Link>
                         <Link href="/about" className={styles.link} onClick={() => setIsOpen(false)}>About</Link>
                         <Link href="/contact" className={styles.link} onClick={() => setIsOpen(false)}>Contact</Link>
-                        <button onClick={toggleTheme} className={styles.themeToggle} style={{ width: '100%', borderRadius: '0.5rem' }}>
-                            {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-                        </button>
                     </div>
                 )}
             </div>
