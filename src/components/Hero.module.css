@@ -42,8 +42,10 @@
     .highlight {
         color: transparent;
         /* Restore transparent for stroke effect */
-        -webkit-text-stroke: 1px var(--primary);
-        /* Bold stroke for larger text */
+        -webkit-text-stroke: 0.5px var(--primary);
+        /* Thinner stroke for mobile */
+        text-shadow: none !important;
+        /* Remove shadow to reduce weirdness */
     }
 
     .actions {
